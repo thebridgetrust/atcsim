@@ -183,10 +183,22 @@ export default class VideoMapController {
      * @return {jquery|HTML Element}
      */
     _buildRow(key, label, checked) {
+        const checkboxId = `video-map-${key
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '')}`;
+
         const template = `
             <div class="form-element">
-                <input class="form-checkbox" type="checkbox" name="${key}"/>
-                <label class="form-label"> ${label}</label>
+                <input
+                    id="${checkboxId}"
+                    class="form-checkbox"
+                    type="checkbox"
+                    name="${key}"
+                />
+                <label class="form-label" for="${checkboxId}">
+                    ${label}
+                </label>
             </div>`;
         const $element = $(template);
 
