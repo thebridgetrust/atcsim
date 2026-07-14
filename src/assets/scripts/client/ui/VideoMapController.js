@@ -207,6 +207,7 @@ export default class VideoMapController {
 
         return $element;
     }
+
     /**
      * Called when the video map selection is changed
      *
