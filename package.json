@@ -3,8 +3,8 @@
   "version": "6.29.0-BETA",
   "description": "An ATC simulator in HTML5",
   "engines": {
-    "node": "11.3.0",
-    "npm": "6.4.0"
+    "node": ">=24 <25",
+    "npm": ">=11 <12"
   },
   "scripts": {
     "build": "gulp build --prod",
