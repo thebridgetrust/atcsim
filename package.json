@@ -9,7 +9,6 @@
   "scripts": {
     "build": "gulp build --prod",
     "build:dev": "gulp build",
-    "coveralls": "nyc report -r text-lcov | coveralls",
     "gulp": "gulp build",
     "lint-diff": "lint-diff",
     "lint": "eslint src/assets/scripts/client/**",
@@ -97,7 +96,6 @@
     "babelify": "10.0.0",
     "browser-env": "3.3.0",
     "browserify": "16.2.3",
-    "coveralls": "3.0.3",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "2.17.2",
