@@ -49,4 +49,4 @@ jobs:
         run: npm run build
 
       - name: Run unit tests
-        run: npx ava --concurrency=5
+        run: npm test
