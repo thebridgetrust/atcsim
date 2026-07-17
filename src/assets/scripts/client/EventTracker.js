@@ -1,7 +1,7 @@
 import { TRACKABLE_EVENT } from './constants/trackableEvents';
 
 /**
- * Provide methods to send tracking events to google analytics
+ * Provide methods to send optional analytics events
  *
  * Exported as a singleton
  *
@@ -14,18 +14,14 @@ class EventTracker {
      */
     constructor() {
         if (!this._isEnabled()) {
-            console.error('Event tracking is disabled because we couldn\'t find `gtag` on the window');
-
             return;
         }
 
         this._gtag = window.gtag;
     }
 
-    // TODO: UiController.onToggleTerrain() and other toggle methods seem to be expecting a
-    // different order to these arguments, possibly screwing up the way events are reported to GA
     /**
-     * Send a custom event to google analytics
+     * Send a custom analytics event
      *
      * @for EventTracker
      * @method recordEvent
@@ -36,12 +32,9 @@ class EventTracker {
      */
     recordEvent(category, action, label, value = null) {
         if (!this._isEnabled()) {
-            console.error('Event tracking is disabled because we couldn\'t find `gtag` on the window');
-
             return;
         }
 
-        // using underscores here to match google analytics api
         const event = {
             event_category: category,
             event_action: action,
@@ -64,12 +57,9 @@ class EventTracker {
      */
     recordClickOnOutboundLink(url) {
         if (!this._isEnabled()) {
-            console.error('Event tracking is disabled because we couldn\'t find `gtag` on the window');
-
             return;
         }
 
-        // using underscores here to match google analytics api
         const event = {
             event_category: TRACKABLE_EVENT.OUTBOUND,
             event_label: url,
@@ -85,7 +75,7 @@ class EventTracker {
      * @returns {boolean}
      */
     _isEnabled() {
-        return typeof window.gtag !== 'undefined';
+        return typeof window.gtag === 'function';
     }
 }
 
