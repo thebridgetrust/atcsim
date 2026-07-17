@@ -1,61 +1,66 @@
-[![openScope Current Release](https://img.shields.io/github/v/release/openscope/openscope.svg)](https://github.com/openscope/openscope/releases)
 [![CI](https://github.com/thebridgetrust/atcsim/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/thebridgetrust/atcsim/actions/workflows/ci.yml)
-[![Slack Status](https://img.shields.io/badge/slack-join-yellow)](https://join.slack.com/t/openscopeatc/shared_invite/zt-g9wq2mch-B7Z9IltlgxgCBC2dBYPjiw)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
 
-# openScope Air Traffic Control Simulator
+# AeroControl
 
-Visit http://openscope.io to begin playing now!
+AeroControl is a modernized browser-based air traffic control simulator.
 
-If you're just getting started, try the tutorial and see the [command reference](documentation/commands.md) for a full list of commands you can use. For information on each airport, see the [airport guide](documentation/airport-guides/airport-guide-directory.md).
+The project is under active development. The public product name is **AeroControl**, while the GitHub repository remains named `atcsim` during the identity transition.
 
-Feel free to [join us on slack](https://join.slack.com/t/openscopeatc/shared_invite/zt-g9wq2mch-B7Z9IltlgxgCBC2dBYPjiw) if you have questions, comments or would like to contribute to the project. We can then add you to the organization so you can begin committing to this repo.
+## Developer quick start
 
----
+### Requirements
 
-## Developer Quick Start
+- Git
+- Node.js 24
+- npm 11
 
-_Prerequisites: In order to successfully complete this quick start, you will need to have the following installed locally:_
-
-- [Git](https://git-scm.com/downloads)
-- [Node](https://nodejs.org/en/download/)
-
-_Installation directions are beyond the scope of this document.  Instead, search the [Google](http://google.com).  Installing these two packages has been written about ad-nauseum._
-
-From a terminal (or GitBash for Windows users), run the following commands:
-
-1. `git clone https://github.com/openscope/openscope.git`
-1. `cd openscope`
-1. `npm install`
-1. `npm run build`
-1. `npm run start`
-
-Once that finishes doing its thing, you should see something close to the following in the terminal:
+### Installation
 
 ```bash
-> node ./public/assets/scripts/server/index.js
-
-Listening on PORT 3003
+git clone https://github.com/thebridgetrust/atcsim.git
+cd atcsim
+npm ci
+npm run build
+npm start
 ```
 
-Success!!
+The application is then available at:
 
-You you do not see this message and are having trouble getting set up, please join us on [Slack](https://join.slack.com/t/openscopeatc/shared_invite/zt-g9wq2mch-B7Z9IltlgxgCBC2dBYPjiw) and someone will be able to troubleshoot with you.
+```text
+http://localhost:3003
+```
 
-For more information on the available tools, please view the [Tools Readme](tools/README.md).
+## Testing
 
-## Contributing
+Run the complete test suite with coverage:
 
-We do not use forks. Instead, we add to add all contributors to the openScope organization. This way, we can keep all branches local to the organization, and use testing integrations on pull requests. If you are interested in contributing, _please message Erik Quinn or Nate Geslin on slack_ so you can be added to the organization.
+```bash
+npm test
+```
 
-We use the [GitFlow Branching Model](http://nvie.com/posts/a-successful-git-branching-model) for managing branches.  If you would like to contribute, you will be expected to use appropriate branch names based on this methodology (and we can help if you have questions).
+Run the production build:
 
-Don't know Javascript?  That's cool, we're always looking for beta testers and/or airport contributors.  If you would like to add a new airport, or help update existing airports, please read the [Airport Format Documentation](documentation/airport-format.md) and [Airport File Standards Documentation](documentation/airport-file-standards.md) to get up to speed on what is expected in that file.
+```bash
+npm run build
+```
 
-## Privacy Disclosures
+Continuous integration runs changed-lines linting, the production build, and the test suite for pull requests targeting `main`.
 
-We use Google Analytics for gathering data about how our app is used. See [Event Tracking](documentation/event-tracking.md) for more information.
+## Documentation
+
+- [Command reference](documentation/commands.md)
+- [Airport guide directory](documentation/airport-guides/airport-guide-directory.md)
+- [Airport format](documentation/airport-format.md)
+- [Airport file standards](documentation/airport-file-standards.md)
+- [Development tools](tools/README.md)
+
+## Project heritage
+
+AeroControl is derived from the open-source [openScope Air Traffic Control Simulator](https://github.com/openscope/openscope).
+
+The original project and its contributors remain acknowledged through the repository history, copyright notices, and MIT license. AeroControl is an independent modernization effort and is not presented as the official openScope project.
 
 ## License
 
-[MIT License](LICENSE.md)
+This project is distributed under the [MIT License](LICENSE.md).

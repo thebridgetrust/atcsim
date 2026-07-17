@@ -1,9 +1,10 @@
-# Openscope Event Tracking
+# AeroControl Event Tracking
 
-* Openscope uses [Google Analytics](https://analytics.google.com/analytics/web/) for basic site analytics
-* Openscope tracks app usage using custom events
+AeroControl does not load a third-party analytics provider by default.
 
-We do this so we can gain a better understanding of how the app is _actually_ being used.  We are a team of volunteers and, as such, our time is limited.  We want to be sure the things we work on are things that are used by our users.
+The existing `EventTracker` remains as an optional integration point for a future AeroControl-owned analytics implementation. When `window.gtag` is unavailable, tracking calls are ignored without sending data or displaying errors.
+
+The event catalogue below documents the existing instrumentation points in the application.
 
 ## Events
 

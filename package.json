@@ -1,7 +1,7 @@
 {
-  "name": "openscope",
+  "name": "aerocontrol",
   "version": "6.29.0-BETA",
-  "description": "An ATC simulator in HTML5",
+  "description": "A modernized browser-based air traffic control simulator",
   "engines": {
     "node": ">=24 <25",
     "npm": ">=11 <12"
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openscope/openscope.git"
+    "url": "git+https://github.com/thebridgetrust/atcsim.git"
   },
   "keywords": [
     "atc",
@@ -38,9 +38,9 @@
   "author": "Jon Ross <jonrosszlsa@gmail.com> (http://zlsa.github.io/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/openscope/openscope/issues"
+    "url": "https://github.com/thebridgetrust/atcsim/issues"
   },
-  "homepage": "https://github.com/openscope/openscope",
+  "homepage": "https://github.com/thebridgetrust/atcsim#readme",
   "ava": {
     "files": [
       "test/**/*.spec.js"
@@ -129,5 +129,6 @@
     "vinyl-buffer": "1.0.1",
     "vinyl-source-stream": "2.0.0",
     "yargs": "13.2.2"
-  }
+  },
+  "private": true
 }
