@@ -1,71 +1,307 @@
 .loadingView {
-    /* using absolute and 0s to force full screen cover when loading screen is active */
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #0d1b1e;
-    color: #dddddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: @ac-space-5;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(70, 214, 200, 0.08),
+            transparent 42%
+        ),
+        linear-gradient(145deg, @ac-color-bg-deep, @ac-color-bg);
+    color: @ac-color-text;
     z-index: @loadingView-z;
 }
 
-.loadingViewMedia {
-    width: 500px;
+.loadingView-grid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.22;
+    background-image:
+        linear-gradient(@ac-color-border 1px, transparent 1px),
+        linear-gradient(90deg, @ac-color-border 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(circle at center, black, transparent 76%);
+    pointer-events: none;
+}
+
+.loadingView-glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.08;
+    background: @ac-color-primary;
+    pointer-events: none;
+}
+
+.loadingView-glow_left {
+    top: -180px;
+    left: -180px;
+}
+
+.loadingView-glow_right {
+    right: -180px;
+    bottom: -180px;
+}
+
+.loadingView-panel {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    padding: @ac-space-7;
+    box-sizing: border-box;
+    border: 1px solid @ac-color-border;
+    border-radius: @ac-radius-lg;
+    background: rgba(10, 23, 28, 0.78);
+    box-shadow: @ac-shadow-lg;
+    backdrop-filter: blur(18px);
+}
+
+.loadingView-brand {
+    display: flex;
+    align-items: center;
+    gap: @ac-space-7;
+}
+
+.loadingView-radar {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    flex: 0 0 180px;
     overflow: hidden;
+    border: 1px solid @ac-color-border-strong;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(70, 214, 200, 0.10),
+            rgba(6, 16, 20, 0.28) 58%,
+            rgba(6, 16, 20, 0.82)
+        );
+    box-shadow:
+        inset 0 0 36px rgba(70, 214, 200, 0.10),
+        0 0 44px rgba(70, 214, 200, 0.08);
 }
 
-.loadingViewMedia-figure {
-    float: left;
-    margin-right: 50px;
+.loadingView-radar-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid @ac-color-border;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.loadingViewMedia-content {
-    margin-top: 10px;
+.loadingView-radar-ring_outer {
+    width: 122px;
+    height: 122px;
+}
+
+.loadingView-radar-ring_inner {
+    width: 62px;
+    height: 62px;
+}
+
+.loadingView-radar-crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: @ac-color-border;
+    transform: translate(-50%, -50%);
+}
+
+.loadingView-radar-crosshair_horizontal {
+    width: 100%;
+    height: 1px;
+}
+
+.loadingView-radar-crosshair_vertical {
+    width: 1px;
+    height: 100%;
+}
+
+.loadingView-radar-sweep {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform-origin: left top;
+    background: linear-gradient(
+        45deg,
+        rgba(70, 214, 200, 0.36),
+        rgba(70, 214, 200, 0)
+    );
+    animation: loadingViewRadarSweep 2.8s linear infinite;
+}
+
+.loadingView-radar-target {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: @ac-color-primary-strong;
+    box-shadow: 0 0 10px @ac-color-primary;
+    animation: loadingViewTargetPulse 1.8s ease-in-out infinite;
+}
+
+.loadingView-radar-target_one {
+    top: 36px;
+    right: 47px;
+}
+
+.loadingView-radar-target_two {
+    right: 34px;
+    bottom: 55px;
+    animation-delay: 0.5s;
+}
+
+.loadingView-radar-target_three {
+    bottom: 37px;
+    left: 53px;
+    animation-delay: 1s;
+}
+
+.loadingView-content {
+    min-width: 0;
+}
+
+.loadingView-eyebrow {
+    margin: 0 0 @ac-space-2;
+    color: @ac-color-primary;
+    font-size: @ac-font-size-xs;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.loadingView-title {
+    margin: 0;
+    color: @ac-color-text;
+    font-size: @ac-font-size-display;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.loadingView-description {
+    margin: @ac-space-3 0 0;
+    color: @ac-color-text-muted;
+    font-size: @ac-font-size-sm;
+    line-height: 1.6;
+}
+
+.loadingView-progress {
+    margin-top: @ac-space-7;
+}
+
+.loadingView-progressHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: @ac-space-3;
+    color: @ac-color-text-subtle;
+    font-size: @ac-font-size-xs;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.loadingView-progressTrack {
+    height: 3px;
     overflow: hidden;
+    border-radius: @ac-radius-pill;
+    background: rgba(148, 207, 211, 0.10);
 }
 
-.loadingViewMedia-content > * + * {
-    margin-top: 5px;
+.loadingView-progressBar {
+    display: block;
+    width: 42%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        @ac-color-primary,
+        @ac-color-primary-strong,
+        transparent
+    );
+    animation: loadingViewProgress 1.8s ease-in-out infinite;
 }
 
-.loadingViewMedia-hd {
-    padding-bottom: 5px;
+@keyframes loadingViewRadarSweep {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.loadingViewMedia-bd {
-    color: #a3e3e8;
-    font-size: 80%;
+@keyframes loadingViewTargetPulse {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
 }
 
-.loadingViewMedia-ft {
-    padding-top: 10px;
-    color: #888888;
-    font-size: 70%;
+@keyframes loadingViewProgress {
+    0% {
+        transform: translateX(-110%);
+    }
+
+    100% {
+        transform: translateX(260%);
+    }
 }
 
-.loadingView-dot {
-    opacity: 0;
-    animation: showHideDot 1s ease-in-out infinite;
+@media (max-width: 680px) {
+    .loadingView-panel {
+        padding: @ac-space-6 @ac-space-5;
+    }
+
+    .loadingView-brand {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: @ac-space-5;
+    }
+
+    .loadingView-radar {
+        width: 130px;
+        height: 130px;
+        flex-basis: 130px;
+    }
+
+    .loadingView-title {
+        font-size: 36px;
+    }
 }
 
-.loadingView-dot_one {
-    animation-delay: 0.1s;
-}
+@media (prefers-reduced-motion: reduce) {
+    .loadingView-radar-sweep,
+    .loadingView-radar-target,
+    .loadingView-progressBar {
+        animation: none;
+    }
 
-.loadingView-dot_two {
-    margin-left: -2px;
-    animation-delay: 0.2s;
-}
-
-.loadingView-dot_three {
-    margin-left: -2px;
-    animation-delay: 0.3s;
-}
-
-@keyframes showHideDot {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  60% { opacity: 1; }
-  100% { opacity: 0; }
+    .loadingView-progressBar {
+        width: 100%;
+        opacity: 0.6;
+    }
 }

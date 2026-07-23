@@ -1,24 +1,44 @@
 <div class="loadingView js-loadingView">
-    <div class="loadingViewMedia u-center-middle">
-        <div class="loadingViewMedia-figure">
-            <img src="assets/images/openscope-radar-sweep.gif" height="150" width="150" />
+    <div class="loadingView-grid" aria-hidden="true"></div>
+    <div class="loadingView-glow loadingView-glow_left" aria-hidden="true"></div>
+    <div class="loadingView-glow loadingView-glow_right" aria-hidden="true"></div>
+
+    <main
+        class="loadingView-panel"
+        role="status"
+        aria-live="polite"
+        aria-label="AeroControl is loading"
+    >
+        <div class="loadingView-brand">
+            <div class="loadingView-radar" aria-hidden="true">
+                <span class="loadingView-radar-ring loadingView-radar-ring_outer"></span>
+                <span class="loadingView-radar-ring loadingView-radar-ring_inner"></span>
+                <span class="loadingView-radar-crosshair loadingView-radar-crosshair_horizontal"></span>
+                <span class="loadingView-radar-crosshair loadingView-radar-crosshair_vertical"></span>
+                <span class="loadingView-radar-sweep"></span>
+                <span class="loadingView-radar-target loadingView-radar-target_one"></span>
+                <span class="loadingView-radar-target loadingView-radar-target_two"></span>
+                <span class="loadingView-radar-target loadingView-radar-target_three"></span>
+            </div>
+
+            <div class="loadingView-content">
+                <p class="loadingView-eyebrow">Air Traffic Control Simulator</p>
+                <h1 class="loadingView-title">AeroControl</h1>
+                <p class="loadingView-description">
+                    Initialising radar, aircraft and navigation data
+                </p>
+            </div>
         </div>
-        <div class="loadingViewMedia-content">
-            <div class="loadingViewMedia-hd">
-                <h1 class="hdg hdg_1">AeroControl</h1>
+
+        <div class="loadingView-progress">
+            <div class="loadingView-progressHeader">
+                <span>Preparing simulation</span>
+                <span>v{{version}}</span>
             </div>
-            <div class="loadingViewMedia-bd">
-                Air Traffic Control Simulator
-            </div>
-            <div class="loadingViewMedia-bd">
-                v{{version}}
-            </div>
-            <div class="loadingViewMedia-ft">
-                Loading
-                <span class="loadingView-dot loadingView-dot_one">.</span>
-                <span class="loadingView-dot loadingView-dot_two">.</span>
-                <span class="loadingView-dot loadingView-dot_three">.</span>
+
+            <div class="loadingView-progressTrack" aria-hidden="true">
+                <span class="loadingView-progressBar"></span>
             </div>
         </div>
-    </div>
+    </main>
 </div>
